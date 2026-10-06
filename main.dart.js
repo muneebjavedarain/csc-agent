@@ -27151,9 +27151,9 @@ m=A.ad(n.h(0,"myName"))
 if(m==null)m="Muhammad Muneeb Javed"
 p=A.ad(n.h(0,"myProfile"))
 if(p==null)p=u.Y
-o=A.ad(n.h(0,"cvName"))
+o=A.ad(n.h(0,"myCvName"))
 if(o==null)o=""
-n=A.ad(n.h(0,"cvUrl"))
+n=A.ad(n.h(0,"myCvUrl"))
 q=new A.vM(m,p,o,n==null?"":n)
 s=1
 break
@@ -27169,9 +27169,9 @@ return A.E(q.pJ("String","myName",a.a),$async$qp)
 case 3:s=4
 return A.E(q.pJ("String","myProfile",a.b),$async$qp)
 case 4:s=5
-return A.E(q.pJ("String","cvName",a.c),$async$qp)
+return A.E(q.pJ("String","myCvName",a.c),$async$qp)
 case 5:s=6
-return A.E(q.pJ("String","cvUrl",a.d),$async$qp)
+return A.E(q.pJ("String","myCvUrl",a.d),$async$qp)
 case 6:return A.J(null,r)}})
 return A.K($async$qp,r)},
 ad3(){var s=0,r=A.L(t.N),q,p,o
