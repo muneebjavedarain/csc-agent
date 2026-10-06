@@ -1,45 +1,35 @@
-import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 
 class CvService {
   static Future<Map<String, String>?> pickAndUploadCv() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['pdf'],
-      withData: kIsWeb,
+      withData: true,
     );
 
     if (result == null || result.files.isEmpty) return null;
 
     final file = result.files.first;
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) throw Exception('User not logged in');
+    final bytes = file.bytes;
 
-    final storageRef = FirebaseStorage.instance
-        .ref()
-        .child('cvs')
-        .child('${user.uid}_${file.name}');
+    if (bytes == null) throw Exception('File data read nahi ho saka');
 
-    TaskSnapshot snapshot;
-    if (kIsWeb) {
-      snapshot = await storageRef.putData(
-        file.bytes!,
-        SettableMetadata(contentType: 'application/pdf'),
-      );
-    } else {
-      snapshot = await storageRef.putFile(
-        File(file.path!),
-        SettableMetadata(contentType: 'application/pdf'),
-      );
-    }
+    final fileName = file.name;
+    final ref = FirebaseStorage.instance
+        .ref('cvs/${DateTime.now().millisecondsSinceEpoch}_$fileName');
 
-    final downloadUrl = await snapshot.ref.getDownloadURL();
+    await ref.putData(
+      bytes,
+      SettableMetadata(contentType: 'application/pdf'),
+    );
+
+    final url = await ref.getDownloadURL();
+
     return {
-      'name': file.name,
-      'url': downloadUrl,
+      'name': fileName,
+      'url': url,
     };
   }
 }

@@ -23,8 +23,8 @@ class ProfileStore {
     return UserProfile(
       name: prefs.getString('myName') ?? defaultName,
       text: prefs.getString('myProfile') ?? defaultProfile,
-      cvName: prefs.getString('cvName') ?? '',
-      cvUrl: prefs.getString('cvUrl') ?? '',
+      cvName: prefs.getString('myCvName') ?? '',
+      cvUrl: prefs.getString('myCvUrl') ?? '',
     );
   }
 
@@ -32,8 +32,8 @@ class ProfileStore {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('myName', p.name);
     await prefs.setString('myProfile', p.text);
-    await prefs.setString('cvName', p.cvName);
-    await prefs.setString('cvUrl', p.cvUrl);
+    await prefs.setString('myCvName', p.cvName);
+    await prefs.setString('myCvUrl', p.cvUrl);
   }
 
   static Future<String> loadGeminiKey() async {
