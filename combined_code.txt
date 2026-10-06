@@ -49,39 +49,16 @@ File: .\pubspec.yaml
 
 name: untitled4
 description: "A new Flutter project."
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-# In Windows, build-name is used as the major, minor, and patch parts
-# of the product and file versions while build-number is used as the build suffix.
 version: 1.0.0+1
 
 environment:
   sdk: ^3.9.2
 
-# Dependencies specify other packages that your package needs in order to work.
-# To automatically upgrade your package dependencies to the latest versions
-# consider running `flutter pub upgrade --major-versions`. Alternatively,
-# dependencies can be manually updated by changing the version numbers below to
-# the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   firebase_core: ^4.15.0
   cloud_firestore: ^6.10.0
@@ -91,60 +68,16 @@ dependencies:
   url_launcher: ^6.3.2
   web: ^1.1.1
   firebase_auth: ^6.7.0
+  file_picker: ^8.1.2
+  firebase_storage: ^13.6.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^5.0.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
-
 
 ============================================================
 File: .\lib\firebase_options.dart
@@ -407,7 +340,6 @@ enum StatusFilter { all, notContacted, emailed, replied, noEmail }
 
 enum _DraftStatus { queued, generating, ready, failed }
 
-/// Background mein ban rahi / ban chuki email ka record
 class _DraftEntry {
   final Map<String, dynamic> professor;
   _DraftStatus status;
@@ -417,7 +349,6 @@ class _DraftEntry {
   _DraftEntry(this.professor, this.status);
 }
 
-/// Ek-click country filters. Chahen to is list mein naye mulk add kar sakte hain.
 const List<String> quickCountries = [
   'China',
   'USA',
@@ -440,13 +371,11 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  /// Ek waqt mein kitni emails saath ban sakti hain
   static const int maxParallel = 4;
 
   UserProfile profile =
   const UserProfile(name: defaultName, text: defaultProfile);
 
-  // Search state
   final searchController = TextEditingController();
   String searchText = '';
   List<Map<String, dynamic>> results = [];
@@ -456,12 +385,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int searchId = 0;
   Timer? debounce;
 
-  // Tracking / priority state
   Map<String, ContactInfo> contacts = {};
   StatusFilter statusFilter = StatusFilter.all;
   bool favoritesFirst = true;
 
-  // Background email generation
   final Map<String, _DraftEntry> drafts = {};
   final List<String> queue = [];
   int running = 0;
@@ -533,7 +460,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
-  /// Search box mein type hone par (debounced)
   void _onSearchTyped(String value) {
     searchText = value;
     debounce?.cancel();
@@ -541,8 +467,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
         Timer(const Duration(milliseconds: 450), () => _runSearch(value));
   }
 
-  /// Country chip par tap hone par: ek click mein us country ki search lagao.
-  /// Dobara usi chip par tap karein to filter hat jata hai.
   void _onQuickCountryTap(String country) {
     final isActive = searchText.trim().toLowerCase() == country.toLowerCase();
     final next = isActive ? '' : country;
@@ -577,7 +501,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     setState(() => contacts = map);
   }
 
-  /// Status icon par tap: none -> emailed -> replied -> noEmail -> none.
   void _cycleStatus(Map<String, dynamic> p) {
     final cur = _infoOf(p).status;
     final next = switch (cur) {
@@ -588,8 +511,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     };
     _setStatus(p, next);
   }
-
-  // ---------- Background email generation ----------
 
   void _snack(String msg, {VoidCallback? onOpen, int seconds = 4}) {
     if (!mounted) return;
@@ -609,7 +530,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return t.length > 140 ? '${t.substring(0, 140)}...' : t;
   }
 
-  /// Key aur profile maujood hain? Nahi to pehle unka dialog kholta hai.
   Future<bool> _ensureReady() async {
     if (GeminiService.runtimeKey.isEmpty && apiKey.isEmpty) {
       await _openApiKey();
@@ -623,10 +543,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return true;
   }
 
-  /// Email icon par tap:
-  /// - tayyar ho to foran kholo
-  /// - ban rahi ho to sirf batao
-  /// - warna background mein banana shuru karo
   Future<void> _onEmailTap(Map<String, dynamic> professor) async {
     final entry = drafts[_idOf(professor)];
     if (entry != null) {
@@ -657,7 +573,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     _pump();
   }
 
-  /// Jitni jagah khali ho (maxParallel tak), queue se utni emails shuru karo
   void _pump() {
     if (!mounted) return;
     while (running < maxParallel && queue.isNotEmpty) {
@@ -675,8 +590,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     try {
       final draft = await EmailService.generate(
         professor: entry.professor,
-        applicantName: profile.name,
-        profileText: profile.text,
+        profile: profile,
       );
       if (draft == null) {
         entry.status = _DraftStatus.failed;
@@ -716,7 +630,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /// Email icon ki shakal draft ki halat ke hisaab se badalti hai
   Widget _emailButton(Map<String, dynamic> data) {
     final entry = drafts[_idOf(data)];
 
@@ -776,7 +689,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
         final fa = _infoOf(a).favorite ? 0 : 1;
         final fb = _infoOf(b).favorite ? 0 : 1;
         if (fa != fb) return fa - fb;
-        // Favorites barabar ho to "not contacted" ko upar rakho
         final sa = _infoOf(a).status == ContactStatus.none ? 0 : 1;
         final sb = _infoOf(b).status == ContactStatus.none ? 0 : 1;
         return sa - sb;
@@ -1225,6 +1137,46 @@ class ContactStore {
 }
 
 ============================================================
+File: .\lib\services\cv_service.dart
+============================================================
+
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
+class CvService {
+  static Future<Map<String, String>?> pickAndUploadCv() async {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
+      withData: true,
+    );
+
+    if (result == null || result.files.isEmpty) return null;
+
+    final file = result.files.first;
+    final bytes = file.bytes;
+
+    if (bytes == null) throw Exception('File data read nahi ho saka');
+
+    final fileName = file.name;
+    final ref = FirebaseStorage.instance
+        .ref('cvs/${DateTime.now().millisecondsSinceEpoch}_$fileName');
+
+    await ref.putData(
+      bytes,
+      SettableMetadata(contentType: 'application/pdf'),
+    );
+
+    final url = await ref.getDownloadURL();
+
+    return {
+      'name': fileName,
+      'url': url,
+    };
+  }
+}
+
+============================================================
 File: .\lib\services\email_service.dart
 ============================================================
 
@@ -1233,6 +1185,7 @@ import '../utils/professor_utils.dart';
 import '../utils/text_utils.dart';
 import 'gemini_service.dart';
 import 'orcid_service.dart';
+import 'profile_store.dart';
 
 class EmailDraft {
   final String text;
@@ -1241,7 +1194,6 @@ class EmailDraft {
 }
 
 class EmailService {
-  /// Naqli / template jaisi emails ko radd karta hai
   static bool _plausibleEmail(String e) {
     if (!looksLikeEmail(e)) return false;
     final lower = e.toLowerCase();
@@ -1257,18 +1209,13 @@ class EmailService {
     return !genericLocals.contains(lower.split('@').first);
   }
 
-  /// Email address ka rasta:
-  ///  - database mein research/email ho -> wahi use hota hai (link nahi khulta)
-  ///  - purana data (sirf homepage link) -> link khol kar page se email nikalta hai
   static Future<EmailDraft?> generate({
     required Map<String, dynamic> professor,
-    required String applicantName,
-    required String profileText,
+    required UserProfile profile,
   }) async {
     String field(String k) => (professor[k] ?? '').toString().trim();
 
-    final name = applicantName.isEmpty ? '[Your Name]' : applicantName;
-    // "Wen Li 0001" -> "Wen Li", "Sael Lee (Lee Sael, 이슬)" -> "Sael Lee"
+    final name = profile.name.isEmpty ? '[Your Name]' : profile.name;
     final profName = cleanName(field('name'))
         .replaceAll(RegExp(r'\s*[\(（].*?[\)）]'), '')
         .trim();
@@ -1279,18 +1226,16 @@ class EmailService {
     final country = field('country');
     final homepage = field('homepage');
     final orcid = field('orcid');
+    final profileText = profile.text;
 
     final hasDbResearch = area.isNotEmpty || lastResearch.isNotEmpty;
-    // Database mein research ho to link kholne ki zaroorat nahi (tez)
     final canOpenPage = !hasDbResearch && homepage.startsWith('http');
     final isKorea = country.toLowerCase().contains('korea') ||
         affiliation.toLowerCase().contains('korea');
 
     final info = ProfInfo();
-    // ORCID sirf tab, jab research database mein na ho aur ORCID asli ho (dummy nahi)
     if (!hasDbResearch && orcid.isNotEmpty && orcid != '0000-0000-0000-0000') {
       await OrcidService.enrich(orcid, info);
-      // ORCID ki email aksar purani hoti hai, is liye istemal nahi karte
       info.orcidEmails = [];
     }
 
@@ -1383,7 +1328,6 @@ $outputRule
 ''';
     }
 
-    // 1) Pehle link kholne wali call. Page na khule to null wapas aata hai.
     String? raw;
     var pageRead = false;
     if (canOpenPage) {
@@ -1391,8 +1335,6 @@ $outputRule
           useUrlContext: true, allowNoToolFallback: false);
       pageRead = raw != null && raw.trim().isNotEmpty;
     }
-    // 2) Link na khula ho (ya link tha hi nahi) to bina link ki call.
-    //    Is surat mein email address kabhi nahi dikhate.
     if (raw == null || raw.trim().isEmpty) {
       pageRead = false;
       raw = await GeminiService.generate(buildPrompt(withPage: false));
@@ -1400,8 +1342,12 @@ $outputRule
     if (raw == null || raw.trim().isEmpty) return null;
 
     final parts = splitEmailAndInfo(raw);
-    final text = parts.$1.replaceAll('**', '').trim();
+    var text = parts.$1.replaceAll('**', '').trim();
     if (text.isEmpty) return null;
+
+    if (profile.cvUrl.isNotEmpty) {
+      text += '\n\nMy Resume/CV: ${profile.cvUrl}';
+    }
 
     if (pageRead) {
       final j = parseJsonObject(parts.$2);
@@ -1655,22 +1601,30 @@ File: .\lib\services\profile_store.dart
 import 'package:shared_preferences/shared_preferences.dart';
 import '../config/app_config.dart';
 
-/// Aap ki apni profile (naam + apne bare mein text)
 class UserProfile {
   final String name;
   final String text;
-  const UserProfile({required this.name, required this.text});
+  final String cvName;
+  final String cvUrl;
+
+  const UserProfile({
+    required this.name,
+    required this.text,
+    this.cvName = '',
+    this.cvUrl = '',
+  });
 
   bool get isEmpty => text.trim().isEmpty;
 }
 
-/// Profile aur Gemini key ko browser mein save / load karta hai
 class ProfileStore {
   static Future<UserProfile> load() async {
     final prefs = await SharedPreferences.getInstance();
     return UserProfile(
       name: prefs.getString('myName') ?? defaultName,
       text: prefs.getString('myProfile') ?? defaultProfile,
+      cvName: prefs.getString('myCvName') ?? '',
+      cvUrl: prefs.getString('myCvUrl') ?? '',
     );
   }
 
@@ -1678,6 +1632,8 @@ class ProfileStore {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('myName', p.name);
     await prefs.setString('myProfile', p.text);
+    await prefs.setString('myCvName', p.cvName);
+    await prefs.setString('myCvUrl', p.cvUrl);
   }
 
   static Future<String> loadGeminiKey() async {
@@ -2414,72 +2370,112 @@ File: .\lib\widgets\profile_dialog.dart
 
 import 'package:flutter/material.dart';
 import '../services/profile_store.dart';
+import '../services/cv_service.dart';
+import '../utils/browser.dart';
 
-/// Apni details likhne / edit karne ka dialog. Save karne par nayi profile wapas deta hai.
-Future<UserProfile?> showProfileDialog(
-    BuildContext context, UserProfile current) {
+Future<UserProfile?> showProfileDialog(BuildContext context, UserProfile current) {
   final nameCtrl = TextEditingController(text: current.name);
   final profileCtrl = TextEditingController(text: current.text);
+  String currentCvName = current.cvName;
+  String currentCvUrl = current.cvUrl;
 
   return showDialog<UserProfile>(
     context: context,
-    builder: (dialogContext) => AlertDialog(
-      title: const Text('My Profile (AI is se email likhega)'),
-      content: SizedBox(
-        width: 520,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: nameCtrl,
-                decoration: const InputDecoration(
-                  labelText: 'Aap ka poora naam',
-                  border: OutlineInputBorder(),
+    builder: (dialogContext) => StatefulBuilder(
+      builder: (context, setState) => AlertDialog(
+        title: const Text('My Profile & CV'),
+        content: SizedBox(
+          width: 520,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: nameCtrl,
+                  decoration: const InputDecoration(
+                    labelText: 'Full Name',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 12),
-              TextField(
-                controller: profileCtrl,
-                minLines: 8,
-                maxLines: 14,
-                decoration: const InputDecoration(
-                  labelText: 'Apne bare mein sab kuch likhein',
-                  alignLabelWithHint: true,
-                  hintText:
-                      'Degree/university, CGPA, skills, projects, research '
-                      'interests, publications, experience, kaun si degree '
-                      '(MS/PhD) aur kis field mein apply karna hai, email/'
-                      'phone waghaira. Urdu/Roman/English kisi mein bhi likh '
-                      'sakte hain.',
-                  border: OutlineInputBorder(),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: profileCtrl,
+                  minLines: 8,
+                  maxLines: 14,
+                  decoration: const InputDecoration(
+                    labelText: 'Profile Details',
+                    alignLabelWithHint: true,
+                    border: OutlineInputBorder(),
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 16),
+                const Text('Resume / CV', style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 8),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        currentCvName.isEmpty ? 'No CV uploaded' : currentCvName,
+                        style: TextStyle(
+                          color: currentCvName.isEmpty ? Colors.grey : Colors.blue,
+                          decoration: currentCvName.isEmpty ? TextDecoration.none : TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                    if (currentCvUrl.isNotEmpty)
+                      IconButton(
+                        icon: const Icon(Icons.open_in_new),
+                        onPressed: () => openUrl(context, currentCvUrl),
+                      ),
+                    OutlinedButton.icon(
+                      onPressed: () async {
+                        try {
+                          final result = await CvService.pickAndUploadCv();
+                          if (result != null) {
+                            setState(() {
+                              currentCvName = result['name']!;
+                              currentCvUrl = result['url']!;
+                            });
+                          }
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Upload failed: $e')),
+                          );
+                        }
+                      },
+                      icon: const Icon(Icons.upload_file),
+                      label: const Text('Upload PDF'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () async {
+              final p = UserProfile(
+                name: nameCtrl.text.trim(),
+                text: profileCtrl.text.trim(),
+                cvName: currentCvName,
+                cvUrl: currentCvUrl,
+              );
+              await ProfileStore.save(p);
+              if (dialogContext.mounted) Navigator.pop(dialogContext, p);
+            },
+            child: const Text('Save'),
+          ),
+        ],
       ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(dialogContext),
-          child: const Text('Cancel'),
-        ),
-        FilledButton(
-          onPressed: () async {
-            final p = UserProfile(
-              name: nameCtrl.text.trim(),
-              text: profileCtrl.text.trim(),
-            );
-            await ProfileStore.save(p);
-            if (dialogContext.mounted) Navigator.pop(dialogContext, p);
-          },
-          child: const Text('Save'),
-        ),
-      ],
     ),
   );
 }
-
 
 ============================================================
 File: .\test\widget_test.dart
