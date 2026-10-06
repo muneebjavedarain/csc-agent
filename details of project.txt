@@ -1,0 +1,41 @@
+Yeh project ek advanced AI-powered CRM aur cold-email automation system hai, jise Flutter (frontend) aur Firebase Firestore (backend) ka istemal karte hue banaya gaya hai. Iska bunyadi maqsad MS/PhD applications ke liye dunya bhar ke professors ko dhoondhna aur unhein Google Gemini API ke zariye highly personalized emails bhejna hai.
+
+## Project Ke Aham Features
+
+* App mein Firebase Firestore ke andar hazaaron professors ka data mehfooz hai.
+
+
+* Gemini API (`gemini-3.5-flash`) `url_context` tool ke zariye professor ki website live read kar ke unke research interests extract karta hai.
+
+
+* AI prompt mein specific rules hain jo China ke professors ke liye "CSC Scholarship" aur South Korea ke liye "GKS" ka zikar karte hain.
+
+
+* App parallel processing (`maxParallel = 4`) use karta hai taake ek waqt mein background mein multiple emails ban sakein aur UI freeze na ho.
+
+
+
+## Pichle Masail (Jo Ab Hal Ho Chuke Hain)
+
+* Database mein 'country' aur 'research_area' ki fields mukammal taur par khali theen.
+
+
+* Purani Python script duplicate entries add kar rahi thi aur CSV files ke headers ko as a professor save kar rahi thi.
+
+
+* Data files (jaise `CSProfessors.json` aur `csrankings.csv`) alag alag theen, jiski wajah se "NOSCHOLARPAGE" ya "0000-0000-0000-0000" jaisi galat values database mein mojood theen.
+
+
+
+## Future Improvements (Behtari Ke Mashwaray)
+
+* **State Management:** App mein zyada tar logic `setState` par mabni hai. Isay Riverpod, Provider, ya GetX par shift karna chahiye taake code maintain karna asan ho.
+
+
+* **Advanced Search:** Abhi `searchTokens` ka tareeqa use ho raha hai jo Firestore reads ko barhata hai. 35,000+ records ke liye Algolia ya Typesense jaise search engines implement karne chahiye.
+
+
+* **Direct Email Integration:** Filhal app email draft kar ke user ka default mail client (Gmail) kholta hai. Gmail API ya SMTP integrate kar ke app ke andar se hi direct email send aur track karne ka feature banaya ja sakta hai.
+
+
+* **Automated Data Pipeline:** Python import script ko cloud function (jaise Google Cloud Functions) par schedule karna chahiye taake naye professors aur unke ORCID publications ka data automatically update hota rahe.

@@ -1,0 +1,2517 @@
+
+
+============================================================
+File: .\analysis_options.yaml
+============================================================
+
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
+#
+# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
+# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
+# invoked from the command line by running `flutter analyze`.
+
+# The following line activates a set of recommended lints for Flutter apps,
+# packages, and plugins designed to encourage good coding practices.
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  # The lint rules applied to this project can be customized in the
+  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
+  # included above or to enable additional rules. A list of all available lints
+  # and their documentation is published at https://dart.dev/lints.
+  #
+  # Instead of disabling a lint rule for the entire project in the
+  # section below, it can also be suppressed for a single line of code
+  # or a specific dart file by using the `// ignore: name_of_lint` and
+  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
+  # producing the lint.
+  rules:
+    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
+    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+
+
+============================================================
+File: .\devtools_options.yaml
+============================================================
+
+description: This file stores settings for Dart & Flutter DevTools.
+documentation: https://docs.flutter.dev/tools/devtools/extensions#configure-extension-enablement-states
+extensions:
+
+
+============================================================
+File: .\pubspec.yaml
+============================================================
+
+name: untitled4
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+  firebase_core: ^4.15.0
+  cloud_firestore: ^6.10.0
+  google_generative_ai: ^0.4.7
+  shared_preferences: ^2.5.5
+  http: ^1.6.0
+  url_launcher: ^6.3.2
+  web: ^1.1.1
+  firebase_auth: ^6.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^5.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
+
+
+============================================================
+File: .\lib\firebase_options.dart
+============================================================
+
+// File generated by FlutterFire CLI.
+// ignore_for_file: type=lint
+import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
+import 'package:flutter/foundation.dart'
+    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+
+/// Default [FirebaseOptions] for use with your Firebase apps.
+///
+/// Example:
+/// ```dart
+/// import 'firebase_options.dart';
+/// // ...
+/// await Firebase.initializeApp(
+///   options: DefaultFirebaseOptions.currentPlatform,
+/// );
+/// ```
+class DefaultFirebaseOptions {
+  static FirebaseOptions get currentPlatform {
+    if (kIsWeb) {
+      return web;
+    }
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.android:
+        return android;
+      case TargetPlatform.iOS:
+        return ios;
+      case TargetPlatform.macOS:
+        return macos;
+      case TargetPlatform.windows:
+        return windows;
+      case TargetPlatform.linux:
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for linux - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
+      default:
+        throw UnsupportedError(
+          'DefaultFirebaseOptions are not supported for this platform.',
+        );
+    }
+  }
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyB2YvcDYRWpgcGx2myHiJscDf_3zKsf_NY',
+    appId: '1:1089598716077:web:c1c3e92aeb25f82eee6e24',
+    messagingSenderId: '1089598716077',
+    projectId: 'csc-outreach-agent',
+    authDomain: 'csc-outreach-agent.firebaseapp.com',
+    storageBucket: 'csc-outreach-agent.firebasestorage.app',
+    measurementId: 'G-5KSLLL588B',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyCMDp4jwMd8vLHGTRTCJOT_BwyKocbBdvk',
+    appId: '1:1089598716077:android:caaada28086ea600ee6e24',
+    messagingSenderId: '1089598716077',
+    projectId: 'csc-outreach-agent',
+    storageBucket: 'csc-outreach-agent.firebasestorage.app',
+  );
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCptaNm5AIPEHqlTNrez9rOgl_i_0NsKWU',
+    appId: '1:1089598716077:ios:3d7a2eaa9ce119dfee6e24',
+    messagingSenderId: '1089598716077',
+    projectId: 'csc-outreach-agent',
+    storageBucket: 'csc-outreach-agent.firebasestorage.app',
+    iosBundleId: 'com.example.untitled4',
+  );
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCptaNm5AIPEHqlTNrez9rOgl_i_0NsKWU',
+    appId: '1:1089598716077:ios:3d7a2eaa9ce119dfee6e24',
+    messagingSenderId: '1089598716077',
+    projectId: 'csc-outreach-agent',
+    storageBucket: 'csc-outreach-agent.firebasestorage.app',
+    iosBundleId: 'com.example.untitled4',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyB2YvcDYRWpgcGx2myHiJscDf_3zKsf_NY',
+    appId: '1:1089598716077:web:ac2e995e11a3fc81ee6e24',
+    messagingSenderId: '1089598716077',
+    projectId: 'csc-outreach-agent',
+    authDomain: 'csc-outreach-agent.firebaseapp.com',
+    storageBucket: 'csc-outreach-agent.firebasestorage.app',
+    measurementId: 'G-H2L35PB6KV',
+  );
+}
+
+
+============================================================
+File: .\lib\main.dart
+============================================================
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'firebase_options.dart';
+import 'screens/auth_gate.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'CSC Outreach',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const AuthGate(),
+    );
+  }
+}
+
+============================================================
+File: .\lib\config\app_config.dart
+============================================================
+
+// Saari settings ek jagah: API key, models, aur aap ki default profile.
+
+// Key code mein nahi rakhte. Website ke upar chaabi (key) icon se paste karein.
+const String apiKey = String.fromEnvironment('GEMINI_KEY');
+
+// Aap ki default profile. My Profile mein edit karne par browser wali version use hogi.
+const String defaultName = 'Muhammad Muneeb Javed';
+const String defaultProfile = r'''
+Degree & University: Final-year Bachelor of Science in Information Technology (BSIT) student at the University of Sargodha, Pakistan.
+
+Target Degree & Field: Master's degree (MS) in Artificial Intelligence, Software Engineering, or Computer Science via the CSC Scholarship for Fall 2027 and other international scholarships.
+
+Technical Skills: Python (FastAPI), MERN Stack (MongoDB, Express.js, React.js, Node.js), C++, Docker, AWS EC2, CrewAI, ChromaDB (RAG), Cloud Deployment, full-stack web development.
+
+Flagship Project & Research:
+Project Name: CRAFT (Code Review and Feedback Tutoring System / Multi-Agent AI System).
+Architecture: A distributed, service-oriented multi-agent framework using CrewAI, Google Gemini API, and ChromaDB for domain-specific RAG. It features an Adaptive Personalization Engine and a secure Docker Sandbox execution environment to prevent AI hallucination and protect cloud infrastructure.
+Live Demo / Hosting: Deployed on AWS EC2 at http://16.170.238.234
+Working Paper: Authored an academic preprint titled "CRAFT: An Adaptive Multi-Agent AI Tutoring System with RAG and Sandboxed Execution for C++ Education."
+
+Contact & Links:
+Email: muneeb0705@gmail.com
+Phone / WhatsApp: +92 303 9538698
+''';
+
+// Pehla model fail/busy ho to agla try hoga
+const List<String> geminiModels = [
+  'gemini-3.5-flash',
+  'gemini-3.5-flash-lite',
+];
+// Sirf in emails ko app ke andar jane denge
+const List<String> allowedEmails = [
+  'mj8016124@gmail.com' ,
+  'muneebjaved0705@gmail.com'
+
+
+];
+
+============================================================
+File: .\lib\models\prof_info.dart
+============================================================
+
+/// Professor ke bare mein nikali gayi info (verify karne ke liye dikhai jati hai)
+class ProfInfo {
+  String? title;
+  String? department;
+  List<String> homepageEmails = [];
+  List<String> orcidEmails = [];
+  List<String> areas = [];
+  List<String> otherLinks = [];
+  List<String> orcidKeywords = [];
+  List<String> orcidWorks = [];
+}
+
+
+============================================================
+File: .\lib\screens\auth_gate.dart
+============================================================
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import '../config/app_config.dart';
+import 'dashboard_screen.dart';
+import 'login_screen.dart';
+
+/// Login nahi to login screen, galat email ho to rok do, theek ho to dashboard.
+class AuthGate extends StatelessWidget {
+  const AuthGate({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snap) {
+        if (snap.connectionState == ConnectionState.waiting) {
+          return const Scaffold(
+              body: Center(child: CircularProgressIndicator()));
+        }
+        final user = snap.data;
+        if (user == null) return const LoginScreen();
+
+        final email = (user.email ?? '').toLowerCase();
+        final allowed = allowedEmails.map((e) => e.toLowerCase()).toList();
+        if (!allowed.contains(email)) {
+          return Scaffold(
+            body: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.lock, size: 48, color: Colors.red),
+                  const SizedBox(height: 12),
+                  Text('$email ko is app ki ijazat nahi hai'),
+                  const SizedBox(height: 16),
+                  OutlinedButton(
+                    onPressed: () => FirebaseAuth.instance.signOut(),
+                    child: const Text('Dusre account se login karein'),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+        return const DashboardScreen();
+      },
+    );
+  }
+}
+
+============================================================
+File: .\lib\screens\dashboard_screen.dart
+============================================================
+
+import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import '../config/app_config.dart';
+import '../services/contact_store.dart';
+import '../services/email_service.dart';
+import '../services/gemini_service.dart';
+import '../services/profile_store.dart';
+import '../services/search_service.dart';
+import '../widgets/api_key_dialog.dart';
+import '../widgets/email_result_dialog.dart';
+import '../widgets/index_builder_dialog.dart';
+import '../widgets/profile_dialog.dart';
+import '../utils/professor_utils.dart';
+
+enum StatusFilter { all, notContacted, emailed, replied, noEmail }
+
+enum _DraftStatus { queued, generating, ready, failed }
+
+/// Background mein ban rahi / ban chuki email ka record
+class _DraftEntry {
+  final Map<String, dynamic> professor;
+  _DraftStatus status;
+  EmailDraft? draft;
+  String? error;
+
+  _DraftEntry(this.professor, this.status);
+}
+
+/// Ek-click country filters. Chahen to is list mein naye mulk add kar sakte hain.
+const List<String> quickCountries = [
+  'China',
+  'USA',
+  'UK',
+  'Australia',
+  'Canada',
+  'Germany',
+  'Hong Kong',
+  'Singapore',
+  'South Korea',
+  'Japan',
+  'New Zealand',
+];
+
+class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({super.key});
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  /// Ek waqt mein kitni emails saath ban sakti hain
+  static const int maxParallel = 4;
+
+  UserProfile profile =
+  const UserProfile(name: defaultName, text: defaultProfile);
+
+  // Search state
+  final searchController = TextEditingController();
+  String searchText = '';
+  List<Map<String, dynamic>> results = [];
+  bool searching = false;
+  bool hitLimit = false;
+  String? searchError;
+  int searchId = 0;
+  Timer? debounce;
+
+  // Tracking / priority state
+  Map<String, ContactInfo> contacts = {};
+  StatusFilter statusFilter = StatusFilter.all;
+  bool favoritesFirst = true;
+
+  // Background email generation
+  final Map<String, _DraftEntry> drafts = {};
+  final List<String> queue = [];
+  int running = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfile();
+    _loadKey();
+    _loadContacts();
+    _runSearch('');
+  }
+
+  @override
+  void dispose() {
+    debounce?.cancel();
+    searchController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _loadProfile() async {
+    final p = await ProfileStore.load();
+    if (!mounted) return;
+    setState(() => profile = p);
+  }
+
+  Future<void> _loadKey() async {
+    final k = await ProfileStore.loadGeminiKey();
+    if (!mounted) return;
+    setState(() => GeminiService.runtimeKey = k);
+  }
+
+  Future<void> _loadContacts() async {
+    final c = await ContactStore.load();
+    if (!mounted) return;
+    setState(() => contacts = c);
+  }
+
+  Future<void> _openProfile() async {
+    final p = await showProfileDialog(context, profile);
+    if (p != null && mounted) setState(() => profile = p);
+  }
+
+  Future<void> _openApiKey() async {
+    await showApiKeyDialog(context);
+    if (mounted) setState(() {});
+  }
+
+  Future<void> _runSearch(String raw) async {
+    final id = ++searchId;
+    setState(() {
+      searching = true;
+      searchError = null;
+    });
+    try {
+      final outcome = await SearchService.search(raw);
+      if (!mounted || id != searchId) return;
+      setState(() {
+        results = outcome.results;
+        hitLimit = outcome.hitLimit;
+        searching = false;
+      });
+    } catch (e) {
+      if (!mounted || id != searchId) return;
+      setState(() {
+        searchError = '$e';
+        searching = false;
+      });
+    }
+  }
+
+  /// Search box mein type hone par (debounced)
+  void _onSearchTyped(String value) {
+    searchText = value;
+    debounce?.cancel();
+    debounce =
+        Timer(const Duration(milliseconds: 450), () => _runSearch(value));
+  }
+
+  /// Country chip par tap hone par: ek click mein us country ki search lagao.
+  /// Dobara usi chip par tap karein to filter hat jata hai.
+  void _onQuickCountryTap(String country) {
+    final isActive = searchText.trim().toLowerCase() == country.toLowerCase();
+    final next = isActive ? '' : country;
+    debounce?.cancel();
+    searchController.text = next;
+    searchController.selection =
+        TextSelection.collapsed(offset: next.length);
+    searchText = next;
+    _runSearch(next);
+  }
+
+  Future<void> _buildIndex() async {
+    final ran = await showIndexBuilder(context);
+    if (ran && mounted) _runSearch(searchText);
+  }
+
+  String _idOf(Map<String, dynamic> p) =>
+      (p['id'] ?? '${p['name']}_${p['affiliation']}').toString();
+
+  ContactInfo _infoOf(Map<String, dynamic> p) =>
+      contacts[_idOf(p)] ?? const ContactInfo();
+
+  Future<void> _setStatus(Map<String, dynamic> p, ContactStatus s) async {
+    final map = await ContactStore.setStatus(_idOf(p), s);
+    if (!mounted) return;
+    setState(() => contacts = map);
+  }
+
+  Future<void> _toggleFavorite(Map<String, dynamic> p) async {
+    final map = await ContactStore.toggleFavorite(_idOf(p));
+    if (!mounted) return;
+    setState(() => contacts = map);
+  }
+
+  /// Status icon par tap: none -> emailed -> replied -> noEmail -> none.
+  void _cycleStatus(Map<String, dynamic> p) {
+    final cur = _infoOf(p).status;
+    final next = switch (cur) {
+      ContactStatus.none => ContactStatus.emailed,
+      ContactStatus.emailed => ContactStatus.replied,
+      ContactStatus.replied => ContactStatus.noEmail,
+      ContactStatus.noEmail => ContactStatus.none,
+    };
+    _setStatus(p, next);
+  }
+
+  // ---------- Background email generation ----------
+
+  void _snack(String msg, {VoidCallback? onOpen, int seconds = 4}) {
+    if (!mounted) return;
+    final m = ScaffoldMessenger.of(context);
+    m.hideCurrentSnackBar();
+    m.showSnackBar(SnackBar(
+      content: Text(msg),
+      duration: Duration(seconds: seconds),
+      action: onOpen == null
+          ? null
+          : SnackBarAction(label: 'Kholein', onPressed: onOpen),
+    ));
+  }
+
+  String _short(String? s) {
+    final t = (s ?? '').replaceAll('\n', ' ').trim();
+    return t.length > 140 ? '${t.substring(0, 140)}...' : t;
+  }
+
+  /// Key aur profile maujood hain? Nahi to pehle unka dialog kholta hai.
+  Future<bool> _ensureReady() async {
+    if (GeminiService.runtimeKey.isEmpty && apiKey.isEmpty) {
+      await _openApiKey();
+      if (!mounted) return false;
+      if (GeminiService.runtimeKey.isEmpty) return false;
+    }
+    if (profile.isEmpty) {
+      await _openProfile();
+      if (profile.isEmpty || !mounted) return false;
+    }
+    return true;
+  }
+
+  /// Email icon par tap:
+  /// - tayyar ho to foran kholo
+  /// - ban rahi ho to sirf batao
+  /// - warna background mein banana shuru karo
+  Future<void> _onEmailTap(Map<String, dynamic> professor) async {
+    final entry = drafts[_idOf(professor)];
+    if (entry != null) {
+      if (entry.status == _DraftStatus.ready) {
+        _openDraft(entry);
+        return;
+      }
+      if (entry.status != _DraftStatus.failed) {
+        _snack('${cleanName(professor['name'])} ki email ban rahi hai...');
+        return;
+      }
+    }
+    if (!await _ensureReady()) return;
+    _enqueue(professor);
+  }
+
+  Future<void> _regenerate(Map<String, dynamic> professor) async {
+    if (!await _ensureReady()) return;
+    _enqueue(professor);
+  }
+
+  void _enqueue(Map<String, dynamic> professor) {
+    final id = _idOf(professor);
+    setState(() {
+      drafts[id] = _DraftEntry(professor, _DraftStatus.queued);
+      queue.add(id);
+    });
+    _pump();
+  }
+
+  /// Jitni jagah khali ho (maxParallel tak), queue se utni emails shuru karo
+  void _pump() {
+    if (!mounted) return;
+    while (running < maxParallel && queue.isNotEmpty) {
+      final id = queue.removeAt(0);
+      final entry = drafts[id];
+      if (entry == null) continue;
+      running++;
+      setState(() => entry.status = _DraftStatus.generating);
+      unawaited(_runDraft(entry));
+    }
+  }
+
+  Future<void> _runDraft(_DraftEntry entry) async {
+    final name = cleanName(entry.professor['name'] ?? 'Professor');
+    try {
+      final draft = await EmailService.generate(
+        professor: entry.professor,
+        applicantName: profile.name,
+        profileText: profile.text,
+      );
+      if (draft == null) {
+        entry.status = _DraftStatus.failed;
+        entry.error =
+        'Google ke servers busy hain, thodi der baad dobara try karein.';
+      } else {
+        entry.draft = draft;
+        entry.status = _DraftStatus.ready;
+      }
+    } catch (e) {
+      entry.status = _DraftStatus.failed;
+      entry.error = '$e';
+    }
+
+    running--;
+    if (!mounted) return;
+    setState(() {});
+
+    if (entry.status == _DraftStatus.ready) {
+      _snack('$name ki email tayyar hai', onOpen: () => _openDraft(entry));
+    } else {
+      _snack('$name ki email fail hui: ${_short(entry.error)}', seconds: 7);
+    }
+    _pump();
+  }
+
+  void _openDraft(_DraftEntry e) {
+    final d = e.draft;
+    if (d == null) return;
+    showEmailResultDialog(
+      context,
+      e.professor,
+      d.info,
+      d.text,
+          () => _setStatus(e.professor, ContactStatus.emailed),
+          () => _setStatus(e.professor, ContactStatus.noEmail),
+    );
+  }
+
+  /// Email icon ki shakal draft ki halat ke hisaab se badalti hai
+  Widget _emailButton(Map<String, dynamic> data) {
+    final entry = drafts[_idOf(data)];
+
+    if (entry == null) {
+      return IconButton(
+        tooltip: 'Email banayein',
+        icon: const Icon(Icons.email, color: Colors.blueAccent),
+        onPressed: () => _onEmailTap(data),
+      );
+    }
+    if (entry.status == _DraftStatus.queued) {
+      return IconButton(
+        tooltip: 'Line mein hai, jaldi shuru hogi',
+        icon: const Icon(Icons.hourglass_empty, color: Colors.orange),
+        onPressed: () => _onEmailTap(data),
+      );
+    }
+    if (entry.status == _DraftStatus.generating) {
+      return IconButton(
+        tooltip: 'Email ban rahi hai...',
+        icon: const SizedBox(
+          width: 20,
+          height: 20,
+          child: CircularProgressIndicator(strokeWidth: 2),
+        ),
+        onPressed: () => _onEmailTap(data),
+      );
+    }
+    if (entry.status == _DraftStatus.ready) {
+      return IconButton(
+        tooltip: 'Email tayyar hai, kholne ke liye tap karein',
+        icon: const Icon(Icons.drafts, color: Colors.green),
+        onPressed: () => _onEmailTap(data),
+      );
+    }
+    return IconButton(
+      tooltip: 'Fail hui: ${_short(entry.error)}\nDobara try ke liye tap karein',
+      icon: const Icon(Icons.error_outline, color: Colors.red),
+      onPressed: () => _onEmailTap(data),
+    );
+  }
+
+  List<Map<String, dynamic>> get _displayed {
+    var list = results.where((p) {
+      final s = _infoOf(p).status;
+      return switch (statusFilter) {
+        StatusFilter.all => true,
+        StatusFilter.notContacted => s == ContactStatus.none,
+        StatusFilter.emailed => s == ContactStatus.emailed,
+        StatusFilter.replied => s == ContactStatus.replied,
+        StatusFilter.noEmail => s == ContactStatus.noEmail,
+      };
+    }).toList();
+
+    if (favoritesFirst) {
+      list.sort((a, b) {
+        final fa = _infoOf(a).favorite ? 0 : 1;
+        final fb = _infoOf(b).favorite ? 0 : 1;
+        if (fa != fb) return fa - fb;
+        // Favorites barabar ho to "not contacted" ko upar rakho
+        final sa = _infoOf(a).status == ContactStatus.none ? 0 : 1;
+        final sb = _infoOf(b).status == ContactStatus.none ? 0 : 1;
+        return sa - sb;
+      });
+    }
+    return list;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final emailedCount =
+        contacts.values.where((c) => c.status == ContactStatus.emailed).length;
+    final repliedCount =
+        contacts.values.where((c) => c.status == ContactStatus.replied).length;
+    final noEmailCount =
+        contacts.values.where((c) => c.status == ContactStatus.noEmail).length;
+    final pendingDrafts = drafts.values
+        .where((d) =>
+    d.status == _DraftStatus.queued ||
+        d.status == _DraftStatus.generating)
+        .length;
+    final readyDrafts =
+        drafts.values.where((d) => d.status == _DraftStatus.ready).length;
+    final shown = _displayed;
+    final activeCountry = searchText.trim().toLowerCase();
+    final keyMissing = GeminiService.runtimeKey.isEmpty && apiKey.isEmpty;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('CSC Professors Dashboard & AI Agent'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          IconButton(
+            tooltip:
+            'Logout (${FirebaseAuth.instance.currentUser?.email ?? ''})',
+            icon: const Icon(Icons.logout),
+            onPressed: () => FirebaseAuth.instance.signOut(),
+          ),
+          IconButton(
+            tooltip: keyMissing
+                ? 'Gemini API key set nahi hai'
+                : 'Gemini API key',
+            icon: Icon(Icons.vpn_key, color: keyMissing ? Colors.red : null),
+            onPressed: _openApiKey,
+          ),
+          IconButton(
+            tooltip: 'Search index banayein (ek dafa)',
+            icon: const Icon(Icons.manage_search),
+            onPressed: _buildIndex,
+          ),
+          TextButton.icon(
+            onPressed: _openProfile,
+            icon: const Icon(Icons.person),
+            label: Text(profile.isEmpty ? 'My Profile (bharein)' : 'My Profile'),
+          ),
+          const SizedBox(width: 8),
+        ],
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+            child: TextField(
+              controller: searchController,
+              decoration: InputDecoration(
+                hintText:
+                'Search: naam, university ya country (multiple words bhi chalenge)...',
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: searchText.isEmpty
+                    ? null
+                    : IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: () => _onQuickCountryTap(searchText),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                filled: true,
+                fillColor: Colors.grey[100],
+              ),
+              onChanged: _onSearchTyped,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 10, 12, 0),
+            child: SizedBox(
+              height: 36,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: quickCountries.length,
+                separatorBuilder: (_, __) => const SizedBox(width: 6),
+                itemBuilder: (context, i) {
+                  final c = quickCountries[i];
+                  final active = activeCountry == c.toLowerCase();
+                  return ChoiceChip(
+                    label: Text(c, style: const TextStyle(fontSize: 12)),
+                    selected: active,
+                    onSelected: (_) => _onQuickCountryTap(c),
+                  );
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 10, 12, 0),
+            child: Row(
+              children: [
+                const Text('Filter:', style: TextStyle(fontSize: 12)),
+                const SizedBox(width: 6),
+                DropdownButton<StatusFilter>(
+                  value: statusFilter,
+                  underline: const SizedBox(),
+                  style: const TextStyle(fontSize: 13, color: Colors.black87),
+                  items: const [
+                    DropdownMenuItem(
+                        value: StatusFilter.all, child: Text('Sab')),
+                    DropdownMenuItem(
+                        value: StatusFilter.notContacted,
+                        child: Text('Not contacted')),
+                    DropdownMenuItem(
+                        value: StatusFilter.emailed, child: Text('Emailed')),
+                    DropdownMenuItem(
+                        value: StatusFilter.replied, child: Text('Replied')),
+                    DropdownMenuItem(
+                        value: StatusFilter.noEmail,
+                        child: Text('Email nahi mili')),
+                  ],
+                  onChanged: (v) =>
+                      setState(() => statusFilter = v ?? StatusFilter.all),
+                ),
+                const SizedBox(width: 16),
+                FilterChip(
+                  label: const Text('⭐ Favorites pehle'),
+                  selected: favoritesFirst,
+                  onSelected: (v) => setState(() => favoritesFirst = v),
+                ),
+                const Spacer(),
+                Text(
+                    '$emailedCount emailed • $repliedCount replied • $noEmailCount no email',
+                    style: const TextStyle(fontSize: 12, color: Colors.black54)),
+              ],
+            ),
+          ),
+          if (searching) const LinearProgressIndicator(minHeight: 2),
+          if (!searching && searchError == null)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '${shown.length} / ${results.length} professors'
+                      '${hitLimit ? ' (bohat zyada match, search ko aur specific karein)' : ''}'
+                      '${pendingDrafts > 0 ? '   •   ⏳ $pendingDrafts emails ban rahi hain' : ''}'
+                      '${readyDrafts > 0 ? '   •   ✅ $readyDrafts tayyar' : ''}',
+                  style: const TextStyle(color: Colors.black54, fontSize: 12),
+                ),
+              ),
+            ),
+          Expanded(
+            child: searchError != null
+                ? Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: SelectableText('Search error: $searchError'),
+              ),
+            )
+                : shown.isEmpty && !searching
+                ? Center(
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Text(
+                  results.isEmpty
+                      ? (searchText.trim().isEmpty
+                      ? 'No data found'
+                      : 'Koi professor nahi mila.\nAgar pehli dafa hai to upar "Search index" (manage_search) icon dabayein.')
+                      : 'Is filter mein koi professor nahi.',
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            )
+                : ListView.builder(
+              itemCount: shown.length,
+              itemBuilder: (context, index) {
+                final data = shown[index];
+                final country = (data['country'] ?? '').toString();
+                final info = _infoOf(data);
+                final dateText =
+                info.date != null ? ' (${info.date})' : '';
+                final isReady =
+                    drafts[_idOf(data)]?.status == _DraftStatus.ready;
+
+                final (statusIcon, statusColor, statusLabel) =
+                switch (info.status) {
+                  ContactStatus.none => (
+                  Icons.circle_outlined,
+                  Colors.grey,
+                  'Not contacted'
+                  ),
+                  ContactStatus.emailed => (
+                  Icons.mark_email_read_outlined,
+                  Colors.blueAccent,
+                  'Emailed$dateText'
+                  ),
+                  ContactStatus.replied => (
+                  Icons.check_circle,
+                  Colors.green,
+                  'Replied$dateText'
+                  ),
+                  ContactStatus.noEmail => (
+                  Icons.do_not_disturb_alt_outlined,
+                  Colors.orange,
+                  'Email nahi mili$dateText'
+                  ),
+                };
+
+                return Card(
+                  margin: const EdgeInsets.symmetric(
+                      horizontal: 12, vertical: 6),
+                  elevation: 2,
+                  child: ListTile(
+                    leading: const CircleAvatar(
+                      child: Icon(Icons.school),
+                    ),
+                    title: Text(
+                      cleanName(data['name'] ?? 'Unknown Name'),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(
+                      '${data['affiliation'] ?? 'No University'}'
+                          '${country.isEmpty ? '' : ' • $country'}',
+                    ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          tooltip: info.favorite
+                              ? 'Favorite se hatayein'
+                              : 'Favorite karein',
+                          icon: Icon(
+                            info.favorite
+                                ? Icons.star
+                                : Icons.star_border,
+                            color: info.favorite
+                                ? Colors.amber
+                                : Colors.grey,
+                          ),
+                          onPressed: () => _toggleFavorite(data),
+                        ),
+                        IconButton(
+                          tooltip: '$statusLabel (tap to change)',
+                          icon: Icon(statusIcon, color: statusColor),
+                          onPressed: () => _cycleStatus(data),
+                        ),
+                        if (isReady)
+                          IconButton(
+                            tooltip: 'Email dobara banayein',
+                            visualDensity: VisualDensity.compact,
+                            icon: const Icon(Icons.refresh, size: 20),
+                            onPressed: () => _regenerate(data),
+                          ),
+                        _emailButton(data),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+============================================================
+File: .\lib\screens\login_screen.dart
+============================================================
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool busy = false;
+  String? error;
+
+  Future<void> _signIn() async {
+    setState(() {
+      busy = true;
+      error = null;
+    });
+    try {
+      await FirebaseAuth.instance.signInWithPopup(GoogleAuthProvider());
+    } on FirebaseAuthException catch (e) {
+      if (e.code != 'popup-closed-by-user' &&
+          e.code != 'cancelled-popup-request') {
+        error = '${e.code}: ${e.message}';
+      }
+    } catch (e) {
+      error = '$e';
+    }
+    if (mounted) setState(() => busy = false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Card(
+          elevation: 3,
+          child: Padding(
+            padding: const EdgeInsets.all(32),
+            child: SizedBox(
+              width: 340,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.school, size: 48),
+                  const SizedBox(height: 12),
+                  const Text('CSC Professors Dashboard',
+                      style:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 8),
+                  const Text('Aage barhne ke liye login karein',
+                      style: TextStyle(color: Colors.black54)),
+                  const SizedBox(height: 24),
+                  FilledButton.icon(
+                    onPressed: busy ? null : _signIn,
+                    icon: const Icon(Icons.login),
+                    label: Text(busy ? 'Wait...' : 'Google se login karein'),
+                  ),
+                  if (error != null) ...[
+                    const SizedBox(height: 16),
+                    SelectableText(error!,
+                        style:
+                        const TextStyle(color: Colors.red, fontSize: 12)),
+                  ],
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+============================================================
+File: .\lib\services\contact_store.dart
+============================================================
+
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
+
+enum ContactStatus { none, emailed, replied, noEmail }
+
+class ContactInfo {
+  final ContactStatus status;
+  final String? date;
+  final bool favorite;
+
+  const ContactInfo({
+    this.status = ContactStatus.none,
+    this.date,
+    this.favorite = false,
+  });
+
+  ContactInfo copyWith({ContactStatus? status, String? date, bool? favorite}) =>
+      ContactInfo(
+        status: status ?? this.status,
+        date: date ?? this.date,
+        favorite: favorite ?? this.favorite,
+      );
+
+  Map<String, dynamic> toJson() =>
+      {'status': status.name, 'date': date, 'favorite': favorite};
+
+  factory ContactInfo.fromJson(Map<String, dynamic> j) => ContactInfo(
+    status: ContactStatus.values.firstWhere(
+            (s) => s.name == j['status'],
+        orElse: () => ContactStatus.none),
+    date: j['date'] as String?,
+    favorite: j['favorite'] == true,
+  );
+}
+
+class ContactStore {
+  static const _key = 'contacts_v1';
+  static Map<String, ContactInfo>? _cache;
+
+  static Future<Map<String, ContactInfo>> load() async {
+    if (_cache != null) return _cache!;
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getString(_key);
+    if (raw == null || raw.isEmpty) return _cache = {};
+
+    final map = <String, ContactInfo>{};
+    try {
+      final decoded = jsonDecode(raw) as Map<String, dynamic>;
+      // Naya safe loop: Agar ek record kharab ho to sirf wo ignore hoga, sab 0 nahi honge!
+      for (final entry in decoded.entries) {
+        try {
+          map[entry.key] = ContactInfo.fromJson(entry.value as Map<String, dynamic>);
+        } catch (_) {
+          // ignore bad record
+        }
+      }
+      _cache = map;
+    } catch (_) {
+      _cache = {};
+    }
+    return _cache!;
+  }
+
+  static Future<void> _persist() async {
+    final prefs = await SharedPreferences.getInstance();
+    final map = _cache ?? {};
+    await prefs.setString(
+        _key, jsonEncode(map.map((k, v) => MapEntry(k, v.toJson()))));
+  }
+
+  static Future<Map<String, ContactInfo>> setStatus(
+      String id, ContactStatus status) async {
+    final map = await load();
+    final now = DateTime.now().toIso8601String().substring(0, 10);
+    map[id] = (map[id] ?? const ContactInfo()).copyWith(
+        status: status, date: now);
+    await _persist();
+    return map;
+  }
+
+  static Future<Map<String, ContactInfo>> toggleFavorite(String id) async {
+    final map = await load();
+    final current = map[id] ?? const ContactInfo();
+    map[id] = current.copyWith(favorite: !current.favorite);
+    await _persist();
+    return map;
+  }
+}
+
+============================================================
+File: .\lib\services\email_service.dart
+============================================================
+
+import '../models/prof_info.dart';
+import '../utils/professor_utils.dart';
+import '../utils/text_utils.dart';
+import 'gemini_service.dart';
+import 'orcid_service.dart';
+
+class EmailDraft {
+  final String text;
+  final ProfInfo info;
+  const EmailDraft({required this.text, required this.info});
+}
+
+class EmailService {
+  /// Naqli / template jaisi emails ko radd karta hai
+  static bool _plausibleEmail(String e) {
+    if (!looksLikeEmail(e)) return false;
+    final lower = e.toLowerCase();
+    const fakeParts = ['example.com', 'domain.com', 'yourdomain', 'youremail'];
+    if (fakeParts.any(lower.contains)) return false;
+    const genericLocals = [
+      'name',
+      'email',
+      'user',
+      'yourname',
+      'firstname.lastname'
+    ];
+    return !genericLocals.contains(lower.split('@').first);
+  }
+
+  /// Email address ka rasta:
+  ///  - database mein research/email ho -> wahi use hota hai (link nahi khulta)
+  ///  - purana data (sirf homepage link) -> link khol kar page se email nikalta hai
+  static Future<EmailDraft?> generate({
+    required Map<String, dynamic> professor,
+    required String applicantName,
+    required String profileText,
+  }) async {
+    String field(String k) => (professor[k] ?? '').toString().trim();
+
+    final name = applicantName.isEmpty ? '[Your Name]' : applicantName;
+    // "Wen Li 0001" -> "Wen Li", "Sael Lee (Lee Sael, 이슬)" -> "Sael Lee"
+    final profName = cleanName(field('name'))
+        .replaceAll(RegExp(r'\s*[\(（].*?[\)）]'), '')
+        .trim();
+    final affiliation = field('affiliation');
+    final area = field('research_area');
+    final lastResearch = field('last_research');
+    final topic = field('research_topic');
+    final country = field('country');
+    final homepage = field('homepage');
+    final orcid = field('orcid');
+
+    final hasDbResearch = area.isNotEmpty || lastResearch.isNotEmpty;
+    // Database mein research ho to link kholne ki zaroorat nahi (tez)
+    final canOpenPage = !hasDbResearch && homepage.startsWith('http');
+    final isKorea = country.toLowerCase().contains('korea') ||
+        affiliation.toLowerCase().contains('korea');
+
+    final info = ProfInfo();
+    // ORCID sirf tab, jab research database mein na ho aur ORCID asli ho (dummy nahi)
+    if (!hasDbResearch && orcid.isNotEmpty && orcid != '0000-0000-0000-0000') {
+      await OrcidService.enrich(orcid, info);
+      // ORCID ki email aksar purani hoti hai, is liye istemal nahi karte
+      info.orcidEmails = [];
+    }
+
+    final basic = [
+      if (profName.isNotEmpty) '- name: $profName',
+      if (affiliation.isNotEmpty) '- affiliation: $affiliation',
+      if (country.isNotEmpty) '- country: $country',
+    ].join('\n');
+
+    final dbBlock = StringBuffer();
+    if (area.isNotEmpty) dbBlock.writeln('- Research areas: $area');
+    if (lastResearch.isNotEmpty) {
+      dbBlock.writeln('- Recent work: $lastResearch');
+    }
+    if (topic.isNotEmpty) {
+      dbBlock.writeln(
+          '- A possible research direction (written for a different applicant, use only as loose inspiration): $topic');
+    }
+
+    final orcidBlock = StringBuffer();
+    if (info.orcidKeywords.isNotEmpty) {
+      orcidBlock.writeln('ORCID keywords: ${info.orcidKeywords.join(', ')}');
+    }
+    if (info.orcidWorks.isNotEmpty) {
+      orcidBlock.writeln('Publication titles (ORCID):');
+      for (final t in info.orcidWorks) {
+        orcidBlock.writeln('- $t');
+      }
+    }
+
+    final String scholarshipRule;
+    if (isMainlandChina(professor)) {
+      scholarshipRule =
+      'The university is in mainland China. Naturally mention that the applicant plans to apply for the Chinese Government Scholarship (CSC) for Fall 2027 and would need the professor\'s acceptance/support for it.';
+    } else if (isKorea) {
+      scholarshipRule =
+      'Do NOT mention CSC or the Chinese Government Scholarship. The university is in South Korea, so you may briefly say the applicant intends to apply for the Global Korea Scholarship (GKS) or university scholarships for the 2027 intake.';
+    } else {
+      scholarshipRule =
+      'IMPORTANT: Do NOT mention CSC or the Chinese Government Scholarship anywhere in this email. Instead, say briefly that the applicant intends to apply for scholarships/funding available through the university or its country for the 2027 intake, without naming a specific scheme unless you are certain it exists.';
+    }
+
+    String buildPrompt({required bool withPage}) {
+      final outputRule = withPage
+          ? '''Output format — EXACTLY this, nothing else:
+---EMAIL---
+(the email here, starting with the Subject line)
+---INFO---
+(a single JSON object with exactly these keys: {"title": ..., "email": [...], "department": ..., "research_areas": [...], "links": [...]}.
+"title": the professor's academic title if the page shows it, else null.
+"email": email addresses written on the page for THIS professor. Look at mailto: links, "Contact" sections and obfuscated forms such as "name [at] uni.edu" or "name at uni dot edu" and convert them to normal form. Copy exactly. Do not return department, secretary or admin addresses unless the page shows nothing else. Never guess or build an address from the name or the university domain; use [] if none is shown.
+"department": department/school shown on the page, else null.
+"research_areas": up to 6 short research topics actually stated on the page; [] if none.
+"links": up to 5 other useful absolute URLs found on the page (lab site, Google Scholar, GitHub); [] if none.
+If you could not open the page, use null/[] for all of the above.)'''
+          : 'Output ONLY the email text, starting with the Subject line. No commentary.';
+
+      return '''
+${withPage ? 'First, open this professor\'s web page: $homepage\n' : ''}
+Write a professional, personalised cold email FROM the applicant TO the professor below, asking about MS supervision / openings.
+
+Professor information from our database:
+$basic
+
+Research information from our database (collected earlier by an AI web search, so it may contain mistakes):
+${dbBlock.isEmpty ? '(none available)' : dbBlock}
+${orcidBlock.isEmpty ? '' : 'Extra research info from ORCID:\n$orcidBlock'}
+Applicant name: $name
+Applicant details (written by the applicant, may be in Urdu/Roman Urdu/English):
+"""
+$profileText
+"""
+
+Personalisation rules:
+- Mention the university by name and show the email was written for this specific university and country, using only safe, general and well-known facts. Do not invent facts about the university.
+- Surname: if the professor's name contains a comma, the part before the comma is the surname; otherwise the surname is usually the last word. Use the exact title shown on the page if you opened it; otherwise write "Dear Professor [Surname]" and do not guess a title.
+- If research areas or recent work are given (database, ORCID or the page), build the email around 1-2 of those themes and pick the 1-2 applicant strengths or projects that match best. Refer to recent work in a hedged way (for example "I noticed your group's recent work on ...") and never claim to have read the papers in depth. If no research info is available, do NOT invent research topics; keep the research reference general.
+- Never claim applicant skills or experience that are not in the applicant details, even if the "possible research direction" mentions them.
+- $scholarshipRule
+
+General rules:
+- Formal, natural English. Include a Subject line at the top (specific, e.g. include the university or field). Do not use markdown or asterisks.
+- Use ONLY facts from the applicant details. Never invent degrees, grades, publications or projects. If something important is missing, use a placeholder like [add detail].
+- When you mention the applicant's flagship project (CRAFT), include its live demo link exactly as given in the applicant details.
+- Use "Fall 2027" only for universities in China, the USA or Canada. For other countries write "2027 intake" instead of "Fall".
+- Do not paste every detail of the profile; keep it focused, about 150-200 words, so it does not read like a template.
+- End with a polite request for guidance/openings and sign off with the applicant's name and email (and phone only if it fits naturally).
+
+$outputRule
+''';
+    }
+
+    // 1) Pehle link kholne wali call. Page na khule to null wapas aata hai.
+    String? raw;
+    var pageRead = false;
+    if (canOpenPage) {
+      raw = await GeminiService.generate(buildPrompt(withPage: true),
+          useUrlContext: true, allowNoToolFallback: false);
+      pageRead = raw != null && raw.trim().isNotEmpty;
+    }
+    // 2) Link na khula ho (ya link tha hi nahi) to bina link ki call.
+    //    Is surat mein email address kabhi nahi dikhate.
+    if (raw == null || raw.trim().isEmpty) {
+      pageRead = false;
+      raw = await GeminiService.generate(buildPrompt(withPage: false));
+    }
+    if (raw == null || raw.trim().isEmpty) return null;
+
+    final parts = splitEmailAndInfo(raw);
+    final text = parts.$1.replaceAll('**', '').trim();
+    if (text.isEmpty) return null;
+
+    if (pageRead) {
+      final j = parseJsonObject(parts.$2);
+      if (j != null && j['error'] == null) {
+        final title = j['title']?.toString().trim();
+        final dept = j['department']?.toString().trim();
+        info.title =
+        (title == null || title.isEmpty || title == 'null') ? null : title;
+        info.department =
+        (dept == null || dept.isEmpty || dept == 'null') ? null : dept;
+        info.homepageEmails =
+            asStrings(j['email']).where(_plausibleEmail).toList();
+        info.areas = asStrings(j['research_areas']);
+        info.otherLinks =
+            asStrings(j['links']).where((l) => l.startsWith('http')).toList();
+      }
+    }
+
+    return EmailDraft(text: text, info: info);
+  }
+}
+
+============================================================
+File: .\lib\services\gemini_service.dart
+============================================================
+
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import '../config/app_config.dart';
+
+class GeminiService {
+  /// Browser mein save ki hui key (app chalne par set hoti hai)
+  static String runtimeKey = '';
+
+  /// Gemini ko REST se call karta hai. useUrlContext=true ho to Gemini
+  /// diye gaye links khud khol kar parh sakta hai (url_context tool).
+  /// 503/timeout par retry, model band ho to agla model.
+  static Future<String?> generate(String prompt,
+      {bool useUrlContext = false, bool allowNoToolFallback = true}) async {
+    final key = runtimeKey.isNotEmpty ? runtimeKey : apiKey;
+    if (key.isEmpty) {
+      throw Exception(
+          'Gemini API key set nahi hai. Upar chaabi (key) wale icon se apni key daalein.');
+    }
+
+    for (final name in geminiModels) {
+      for (var attempt = 0; attempt < 2; attempt++) {
+        http.Response res;
+        try {
+          res = await http
+              .post(
+            Uri.parse(
+                'https://generativelanguage.googleapis.com/v1beta/models/$name:generateContent'),
+            headers: {
+              'Content-Type': 'application/json',
+              'x-goog-api-key': key,
+            },
+            body: jsonEncode({
+              'contents': [
+                {
+                  'parts': [
+                    {'text': prompt}
+                  ]
+                }
+              ],
+              if (useUrlContext)
+                'tools': [
+                  {'url_context': {}}
+                ],
+            }),
+          )
+              .timeout(const Duration(seconds: 25));
+        } on TimeoutException {
+          // Server slow tha, crash mat ho — agla attempt/model try karo
+          continue;
+        } catch (_) {
+          // Network ka koi aur masla — agla attempt/model try karo
+          continue;
+        }
+
+        if (res.statusCode == 200) {
+          final data = jsonDecode(res.body);
+          final parts =
+              (data['candidates']?[0]?['content']?['parts'] as List?) ?? [];
+          final text = parts
+              .map((p) => (p['text'] ?? '').toString())
+              .where((t) => t.isNotEmpty)
+              .join('\n')
+              .trim();
+          if (text.isNotEmpty) return text;
+          if (useUrlContext && allowNoToolFallback) {
+            return generate(prompt, useUrlContext: false);
+          }
+          return null;
+        }
+
+        final body = res.body;
+        final busy = res.statusCode == 503 ||
+            res.statusCode == 429 ||
+            body.contains('UNAVAILABLE');
+        final unavailable =
+            res.statusCode == 404 || body.contains('no longer available');
+
+        if (unavailable) break; // is model ko chhorho, agla try karo
+        if (busy) {
+          await Future.delayed(Duration(seconds: 1 + attempt));
+          continue;
+        }
+        // Koi aur error: agar url tool ki wajah se ho to bina tool ke try karo
+        if (useUrlContext) {
+          if (allowNoToolFallback) {
+            return generate(prompt, useUrlContext: false);
+          }
+          return null;
+        }
+        throw Exception('Gemini error ${res.statusCode}: $body');
+      }
+    }
+    return null; // sab models busy / slow
+  }
+}
+
+============================================================
+File: .\lib\services\homepage_service.dart
+============================================================
+
+import '../models/prof_info.dart';
+import '../utils/text_utils.dart';
+import 'gemini_service.dart';
+
+class HomepageService {
+  /// Gemini (url_context tool) se professor ka homepage khulwa kar
+  /// title, email, research areas aur links nikalta hai.
+  static Future<void> enrich(String url, ProfInfo info) async {
+    if (!url.startsWith('http')) return;
+
+    final prompt = '''
+Open this professor's web page: $url
+
+Return ONLY a JSON object (no markdown, no commentary) with exactly these keys:
+{"title": ..., "email": [...], "department": ..., "research_areas": [...], "links": [...]}
+
+Rules:
+- "title": the academic title exactly as the page shows it (e.g. "Professor", "Associate Professor", "Dr"), or null.
+- "email": list of email addresses that are written on the page. Copy them exactly. If the page obfuscates them (e.g. "name [at] uni.edu"), convert to normal form. NEVER guess or construct an address; use [] if none is shown.
+- "department": the department/school shown on the page, or null.
+- "research_areas": up to 6 short research topics stated on the page; [] if none.
+- "links": up to 5 other useful absolute URLs found on the page (lab website, Google Scholar, GitHub, personal site); [] if none.
+- If you cannot open the page, return {"error": "cannot open"}.
+''';
+
+    try {
+      // Homepage parhna sab se sust step hai; 20 second se zyada wait na karo,
+      // warna bina homepage info ke email jaldi ban jaye.
+      final text = await GeminiService.generate(prompt,
+          useUrlContext: true, allowNoToolFallback: false)
+          .timeout(const Duration(seconds: 20), onTimeout: () => null);
+      if (text == null) return;
+      final j = parseJsonObject(text);
+      if (j == null || j['error'] != null) return;
+
+      final title = j['title']?.toString().trim();
+      final dept = j['department']?.toString().trim();
+      info.title = (title == null || title.isEmpty || title == 'null')
+          ? null
+          : title;
+      info.department = (dept == null || dept.isEmpty || dept == 'null')
+          ? null
+          : dept;
+      info.homepageEmails = asStrings(j['email']);
+      info.areas = asStrings(j['research_areas']);
+      info.otherLinks =
+          asStrings(j['links']).where((l) => l.startsWith('http')).toList();
+    } catch (_) {}
+  }
+}
+
+============================================================
+File: .\lib\services\orcid_service.dart
+============================================================
+
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import '../models/prof_info.dart';
+
+class OrcidService {
+  /// ORCID se keywords, papers aur (agar public ho) email laata hai
+  static Future<void> enrich(String orcid, ProfInfo info) async {
+    final id = orcid.trim();
+    if (id.isEmpty) return;
+    const headers = {'Accept': 'application/json'};
+
+    Future<dynamic> get(String path) async {
+      try {
+        final r = await http
+            .get(Uri.parse('https://pub.orcid.org/v3.0/$id/$path'),
+                headers: headers)
+            .timeout(const Duration(seconds: 8));
+        if (r.statusCode == 200) return jsonDecode(r.body);
+      } catch (_) {}
+      return null;
+    }
+
+    final results =
+        await Future.wait([get('keywords'), get('works'), get('person')]);
+
+    try {
+      final kw = results[0]?['keyword'];
+      if (kw is List) {
+        info.orcidKeywords = kw
+            .map((k) => (k['content'] ?? '').toString().trim())
+            .where((k) => k.isNotEmpty)
+            .take(15)
+            .toList();
+      }
+    } catch (_) {}
+
+    try {
+      final groups = results[1]?['group'];
+      if (groups is List) {
+        for (final g in groups) {
+          final summaries = g['work-summary'];
+          if (summaries is! List || summaries.isEmpty) continue;
+          final t = summaries.first['title']?['title']?['value'];
+          if (t != null && t.toString().trim().isNotEmpty) {
+            info.orcidWorks.add(t.toString().trim());
+          }
+          if (info.orcidWorks.length >= 8) break;
+        }
+      }
+    } catch (_) {}
+
+    try {
+      final emails = results[2]?['emails']?['email'];
+      if (emails is List) {
+        info.orcidEmails = emails
+            .map((e) => (e['email'] ?? '').toString().trim())
+            .where((e) => e.isNotEmpty)
+            .toList();
+      }
+    } catch (_) {}
+  }
+}
+
+
+============================================================
+File: .\lib\services\profile_store.dart
+============================================================
+
+import 'package:shared_preferences/shared_preferences.dart';
+import '../config/app_config.dart';
+
+/// Aap ki apni profile (naam + apne bare mein text)
+class UserProfile {
+  final String name;
+  final String text;
+  const UserProfile({required this.name, required this.text});
+
+  bool get isEmpty => text.trim().isEmpty;
+}
+
+/// Profile aur Gemini key ko browser mein save / load karta hai
+class ProfileStore {
+  static Future<UserProfile> load() async {
+    final prefs = await SharedPreferences.getInstance();
+    return UserProfile(
+      name: prefs.getString('myName') ?? defaultName,
+      text: prefs.getString('myProfile') ?? defaultProfile,
+    );
+  }
+
+  static Future<void> save(UserProfile p) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('myName', p.name);
+    await prefs.setString('myProfile', p.text);
+  }
+
+  static Future<String> loadGeminiKey() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('geminiKey') ?? '';
+  }
+
+  static Future<void> saveGeminiKey(String key) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('geminiKey', key.trim());
+  }
+}
+
+============================================================
+File: .\lib\services\search_service.dart
+============================================================
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../utils/professor_utils.dart';
+
+class SearchOutcome {
+  final List<Map<String, dynamic>> results;
+  final bool hitLimit;
+  const SearchOutcome(this.results, this.hitLimit);
+}
+
+class IndexReport {
+  final int updated;
+  final int skipped;
+  final String? error;
+  const IndexReport(this.updated, this.skipped, this.error);
+}
+
+class SearchService {
+  static const int limit = 300;
+
+  /// Sab se lamba word server par (searchTokens se), baqi words app mein filter.
+  static Future<SearchOutcome> search(String raw) async {
+    final q = raw.toLowerCase().trim();
+    final col = FirebaseFirestore.instance.collection('professors');
+    final words = q.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
+
+    List<QueryDocumentSnapshot> docs;
+    if (words.isEmpty) {
+      docs = (await col.limit(100).get()).docs;
+    } else {
+      final sorted = [...words]..sort((a, b) => b.length.compareTo(a.length));
+      var token = sorted.first;
+      if (token.length > 15) token = token.substring(0, 15);
+      docs = (await col
+          .where('searchTokens', arrayContains: token)
+          .limit(limit)
+          .get())
+          .docs;
+    }
+
+    final list = <Map<String, dynamic>>[];
+    for (final d in docs) {
+      final data = Map<String, dynamic>.from(d.data() as Map<String, dynamic>);
+      data['id'] = d.id; // tracking ke liye stable ID
+      final hay = [data['name'], data['affiliation'], data['country']]
+          .map((e) => (e ?? '').toString())
+          .join(' ')
+          .toLowerCase();
+      final ok = words.every(
+              (w) => hay.contains(w) || (w == 'china' && isMainlandChina(data)));
+      if (ok) list.add(data);
+    }
+    return SearchOutcome(list, words.isNotEmpty && docs.length >= limit);
+  }
+
+  /// Ek dafa chalane wala kaam: har professor mein searchTokens likhta hai.
+  /// Jin docs mein pehle se hai unhein skip karta hai (resume ho sakta hai).
+  static Future<IndexReport> buildIndex(void Function(String) onProgress) async {
+    final db = FirebaseFirestore.instance;
+    var updated = 0, skipped = 0;
+    DocumentSnapshot? last;
+
+    try {
+      while (true) {
+        Query q = db
+            .collection('professors')
+            .orderBy(FieldPath.documentId)
+            .limit(500);
+        if (last != null) q = q.startAfterDocument(last);
+        final snap = await q.get();
+        if (snap.docs.isEmpty) break;
+
+        final batch = db.batch();
+        var n = 0;
+        for (final d in snap.docs) {
+          final data = d.data() as Map<String, dynamic>;
+          if (data['searchTokens'] is List) {
+            skipped++;
+            continue;
+          }
+          batch.update(d.reference, {'searchTokens': buildSearchTokens(data)});
+          n++;
+        }
+        if (n > 0) await batch.commit();
+        updated += n;
+        last = snap.docs.last;
+        onProgress('Update hue: $updated   |   Pehle se theek: $skipped');
+      }
+    } catch (e) {
+      return IndexReport(updated, skipped, '$e');
+    }
+    return IndexReport(updated, skipped, null);
+  }
+}
+
+============================================================
+File: .\lib\utils\browser.dart
+============================================================
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:web/web.dart' as web;
+
+/// Link browser mein kholta hai (Flutter web). Na khule to link copy kar deta hai.
+Future<void> openUrl(BuildContext context, String u) async {
+  try {
+    final isMail = u.startsWith('mailto:');
+    final w = web.window.open(u, isMail ? '_self' : '_blank');
+    if (isMail || w != null) return;
+  } catch (e) {
+    debugPrint('openUrl error: $e');
+  }
+  await Clipboard.setData(ClipboardData(text: u));
+  if (context.mounted) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+          content: Text(
+              'Popup block ho gaya. Link copy kar diya hai, browser mein paste karein.')),
+    );
+  }
+}
+
+
+============================================================
+File: .\lib\utils\mail_utils.dart
+============================================================
+
+import 'package:url_launcher/url_launcher.dart';
+import 'text_utils.dart';
+
+String? encodeQueryParameters(Map<String, String> params) {
+  return params.entries
+      .map((MapEntry<String, String> e) =>
+  '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+      .join('&');
+}
+
+Future<void> openEmailApp(List<String> emails, String generatedEmailText) async {
+  // text_utils.dart ka function use kar ke subject aur body alag karein
+  final parts = splitEmail(generatedEmailText);
+  final subject = parts[0];
+  final body = parts[1];
+
+  final toAddress = emails.join(',');
+
+  final Uri emailLaunchUri = Uri(
+    scheme: 'mailto',
+    path: toAddress,
+    query: encodeQueryParameters(<String, String>{
+      'subject': subject,
+      'body': body,
+    }),
+  );
+
+  if (await canLaunchUrl(emailLaunchUri)) {
+    await launchUrl(emailLaunchUri);
+  }
+}
+
+============================================================
+File: .\lib\utils\professor_utils.dart
+============================================================
+
+// Professor ke data se related helper functions.
+
+/// CSC sirf mainland China ki universities ke liye hai
+/// (Hong Kong / Macau / Taiwan alag hain).
+bool isMainlandChina(Map<String, dynamic> data) {
+  final country = (data['country'] ?? '').toString().toLowerCase().trim();
+  final affiliation = (data['affiliation'] ?? '').toString().toLowerCase();
+  const excluded = ['hong kong', 'macau', 'macao', 'taiwan'];
+  if (excluded.any((x) => country.contains(x) || affiliation.contains(x))) {
+    return false;
+  }
+  if (country == 'cn' || country.contains('china')) return true;
+  // country missing ho to university ke naam se andaza
+  const cnHints = [
+    'china', 'chinese', 'beijing', 'shanghai', 'tsinghua', 'peking',
+    'zhejiang', 'fudan', 'nanjing', 'wuhan', 'harbin', 'xi\'an', 'xidian',
+    'tianjin', 'shenzhen', 'guangzhou', 'sun yat-sen', 'huazhong',
+    'sichuan', 'chongqing', 'hunan', 'jilin', 'shandong', 'xinjiang',
+    'uestc', 'ustc', 'nankai', 'tongji', 'southeast university',
+    'dalian', 'northeastern university (china)',
+  ];
+  if (country.isEmpty || country.contains('unknown')) {
+    return cnHints.any((h) => affiliation.contains(h));
+  }
+  return false;
+}
+
+/// Har doc ke liye search tokens: naam/university/country ke words aur
+/// unke prefixes (3+ letters), taake "syd" likhne par "sydney" mile.
+List<String> buildSearchTokens(Map<String, dynamic> data) {
+  final text = [data['name'], data['affiliation'], data['country']]
+      .map((e) => (e ?? '').toString())
+      .join(' ')
+      .toLowerCase();
+  final words = text
+      .split(RegExp(r'[^\p{L}\p{N}]+', unicode: true))
+      .where((w) => w.length >= 2);
+  final tokens = <String>{};
+  for (final w in words) {
+    if (w.length == 2) {
+      tokens.add(w); // Li, Wu, Xu jaise surnames
+      continue;
+    }
+    final max = w.length < 15 ? w.length : 15;
+    for (var i = 3; i <= max; i++) {
+      tokens.add(w.substring(0, i));
+    }
+  }
+  if (isMainlandChina(data)) tokens.add('china');
+  return tokens.take(200).toList();
+}
+String cleanName(dynamic raw) =>
+    raw.toString().replaceAll(RegExp(r'\s+\d{4}$'), '').trim();
+
+============================================================
+File: .\lib\utils\text_utils.dart
+============================================================
+
+import 'dart:convert';
+
+List<String> asStrings(dynamic v) {
+  if (v is String) v = [v];
+  if (v is! List) return [];
+  return v
+      .map((e) => e.toString().trim())
+      .where((e) => e.isNotEmpty && e != 'null')
+      .toList();
+}
+
+Map<String, dynamic>? parseJsonObject(String t) {
+  final a = t.indexOf('{');
+  final b = t.lastIndexOf('}');
+  if (a < 0 || b <= a) return null;
+  try {
+    return jsonDecode(t.substring(a, b + 1)) as Map<String, dynamic>;
+  } catch (_) {
+    return null;
+  }
+}
+
+bool looksLikeEmail(String e) =>
+    RegExp(r'^[\w.+\-]+@[\w\-]+(\.[\w\-]+)+$').hasMatch(e);
+
+/// [subject, body]
+List<String> splitEmail(String text) {
+  final lines = text.trim().split('\n');
+  var subject = '';
+  var start = 0;
+  if (lines.isNotEmpty && lines.first.toLowerCase().startsWith('subject:')) {
+    subject = lines.first.substring(8).trim();
+    start = 1;
+  }
+  return [subject, lines.skip(start).join('\n').trim()];
+}
+
+/// Gemini ke combined jawab ko email hisse aur JSON info hisse mein todta hai.
+/// (email text, info json text)
+(String, String) splitEmailAndInfo(String raw) {
+  final emailMark = raw.indexOf('---EMAIL---');
+  final infoMark = raw.indexOf('---INFO---');
+  if (emailMark == -1 || infoMark == -1 || infoMark < emailMark) {
+    // Markers na milein to poora jawab hi email samjho
+    return (raw.trim(), '');
+  }
+  final email = raw.substring(emailMark + '---EMAIL---'.length, infoMark).trim();
+  final info = raw.substring(infoMark + '---INFO---'.length).trim();
+  return (email, info);
+}
+
+============================================================
+File: .\lib\widgets\api_key_dialog.dart
+============================================================
+
+import 'package:flutter/material.dart';
+import '../services/gemini_service.dart';
+import '../services/profile_store.dart';
+
+/// Gemini key paste karne ka dialog. Key sirf is browser mein save hoti hai.
+Future<void> showApiKeyDialog(BuildContext context) async {
+  final ctrl = TextEditingController(text: GeminiService.runtimeKey);
+  await showDialog(
+    context: context,
+    builder: (dialogContext) => AlertDialog(
+      title: const Text('Gemini API key'),
+      content: SizedBox(
+        width: 480,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Key sirf is browser mein save hoti hai, code ya GitHub mein nahi jati.',
+              style: TextStyle(fontSize: 12),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: ctrl,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: 'API key',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext),
+          child: const Text('Cancel'),
+        ),
+        FilledButton(
+          onPressed: () async {
+            final key = ctrl.text.trim();
+            await ProfileStore.saveGeminiKey(key);
+            GeminiService.runtimeKey = key;
+            if (dialogContext.mounted) Navigator.pop(dialogContext);
+          },
+          child: const Text('Save'),
+        ),
+      ],
+    ),
+  );
+}
+
+============================================================
+File: .\lib\widgets\email_result_dialog.dart
+============================================================
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '../models/prof_info.dart';
+import '../utils/browser.dart';
+import '../utils/professor_utils.dart';
+import '../utils/text_utils.dart';
+
+void showEmailResultDialog(
+    BuildContext context,
+    Map<String, dynamic> professorData,
+    ProfInfo info,
+    String text,
+    VoidCallback onMarkSent,
+    VoidCallback onMarkNoEmail,
+    ) {
+  final emails = <String, String>{};
+
+  // Database ki email sab se pehle (agar maujood ho)
+  final dbEmail = (professorData['email'] ?? '').toString().trim();
+  if (dbEmail.isNotEmpty) emails[dbEmail] = 'database';
+
+  for (final e in info.homepageEmails) {
+    emails.putIfAbsent(e, () => 'homepage');
+  }
+  for (final e in info.orcidEmails) {
+    emails.putIfAbsent(e, () => 'ORCID');
+  }
+
+  final validEmails = emails.keys.where((e) => looksLikeEmail(e)).toList();
+  final allEmailsString = validEmails.join(',');
+  // Gmail ke "To" mein: database ki email, warna link se mili hui
+  final toAddress = looksLikeEmail(dbEmail)
+      ? dbEmail
+      : (validEmails.isNotEmpty ? allEmailsString : '');
+
+  showDialog(
+    context: context,
+    builder: (dialogContext) => AlertDialog(
+      title: Text('Email for ${cleanName(professorData['name'])}'),
+      content: SizedBox(
+        width: 980,
+        height: 520,
+        child: LayoutBuilder(builder: (c, box) {
+          final wide = MediaQuery.of(c).size.width > 850;
+          final emailBox = SingleChildScrollView(child: SelectableText(text));
+          final side = ProfessorInfoBox(
+              professorData: professorData, info: info, emails: emails);
+          if (wide) {
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(flex: 5, child: emailBox),
+                const SizedBox(width: 16),
+                SizedBox(width: 340, child: side),
+              ],
+            );
+          }
+          return Column(
+            children: [
+              Expanded(child: emailBox),
+              const Divider(),
+              Expanded(child: side),
+            ],
+          );
+        }),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            final parts = splitEmail(text);
+            openUrl(context,
+                'https://mail.google.com/mail/?view=cm&fs=1&to=${Uri.encodeComponent(toAddress)}&su=${Uri.encodeComponent(parts[0])}&body=${Uri.encodeComponent(parts[1])}');
+          },
+          child: const Text('Gmail mein kholein'),
+        ),
+        TextButton(
+          onPressed: () {
+            final parts = splitEmail(text);
+            openUrl(context,
+                'mailto:$toAddress?subject=${Uri.encodeComponent(parts[0])}&body=${Uri.encodeComponent(parts[1])}');
+          },
+          child: const Text('Mail app'),
+        ),
+        TextButton(
+          onPressed: () {
+            Clipboard.setData(ClipboardData(text: text));
+            ScaffoldMessenger.of(dialogContext).showSnackBar(
+              const SnackBar(content: Text('Email copy ho gayi')),
+            );
+          },
+          child: const Text('Copy'),
+        ),
+        // Email address nahi mila to isay dabayein
+        OutlinedButton.icon(
+          onPressed: () {
+            onMarkNoEmail(); // Dashboard mein "Email nahi mili" mark ho jayega
+            Navigator.pop(dialogContext);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                  content: Text('"Email nahi mili" filter mein add ho gaya')),
+            );
+          },
+          icon: const Icon(Icons.do_not_disturb_alt_outlined),
+          label: const Text('Email nahi mili'),
+          style: OutlinedButton.styleFrom(
+            foregroundColor: Colors.orange.shade800,
+            side: BorderSide(color: Colors.orange.shade700),
+            // Koi email na mili ho to button halka narangi dikhega
+            backgroundColor: validEmails.isEmpty ? Colors.orange.shade50 : null,
+          ),
+        ),
+        ElevatedButton.icon(
+          onPressed: () {
+            onMarkSent(); // Dashboard mein Emailed mark ho jayega
+            Navigator.pop(dialogContext);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Emailed filter mein add ho gaya!')),
+            );
+          },
+          icon: const Icon(Icons.check_circle),
+          label: const Text('Mark as Sent'),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+            foregroundColor: Colors.white,
+          ),
+        ),
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext),
+          child: const Text('Close'),
+        ),
+      ],
+    ),
+  );
+}
+
+class ProfessorInfoBox extends StatelessWidget {
+  final Map<String, dynamic> professorData;
+  final ProfInfo info;
+  final Map<String, String> emails;
+
+  const ProfessorInfoBox({
+    super.key,
+    required this.professorData,
+    required this.info,
+    required this.emails,
+  });
+
+  Widget sectionTitle(String t) => Padding(
+    padding: const EdgeInsets.only(top: 12, bottom: 4),
+    child: Text(t,
+        style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 13,
+            color: Colors.black87)),
+  );
+
+  Widget linkRow(BuildContext context, String label, String url) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: SelectableText.rich(
+              TextSpan(children: [
+                TextSpan(
+                    text: '$label: ',
+                    style: const TextStyle(fontWeight: FontWeight.w600)),
+                TextSpan(text: url, style: const TextStyle(color: Colors.blue)),
+              ]),
+              style: const TextStyle(fontSize: 12)),
+        ),
+        IconButton(
+          visualDensity: VisualDensity.compact,
+          tooltip: 'Kholein',
+          icon: const Icon(Icons.open_in_new, size: 18),
+          onPressed: () => openUrl(context, url),
+        ),
+      ],
+    );
+  }
+
+  Widget emailRow(String email, String source) {
+    final ok = looksLikeEmail(email);
+    return Row(
+      children: [
+        Icon(ok ? Icons.check_circle : Icons.warning_amber,
+            size: 16, color: ok ? Colors.green : Colors.orange),
+        const SizedBox(width: 6),
+        Expanded(
+          child: SelectableText('$email  ($source)',
+              style: const TextStyle(fontSize: 13)),
+        ),
+        IconButton(
+          visualDensity: VisualDensity.compact,
+          tooltip: 'Copy',
+          icon: const Icon(Icons.copy, size: 16),
+          onPressed: () => Clipboard.setData(ClipboardData(text: email)),
+        ),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final orcid = (professorData['orcid'] ?? '').toString().trim();
+    final scholar = (professorData['scholarid'] ?? '').toString().trim();
+    final homepage = (professorData['homepage'] ?? '').toString().trim();
+
+    final links = <String, String>{};
+    if (homepage.isNotEmpty) links['Homepage'] = homepage;
+    // 0000-0000-0000-0000 aur NOSCHOLARPAGE data mein placeholder hain, asli ID nahi
+    if (orcid.isNotEmpty && orcid != '0000-0000-0000-0000') {
+      links['ORCID'] = 'https://orcid.org/$orcid';
+    }
+    if (scholar.isNotEmpty && scholar.toUpperCase() != 'NOSCHOLARPAGE') {
+      links['Google Scholar'] =
+      'https://scholar.google.com/citations?user=$scholar';
+    }
+    for (var i = 0; i < info.otherLinks.length; i++) {
+      links['Link ${i + 1}'] = info.otherLinks[i];
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.grey[100],
+        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Professor info (bhejne se pehle verify karein)',
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            sectionTitle('Email address'),
+            if (emails.isEmpty)
+              const Text(
+                  'Database, homepage ya ORCID par koi email nahi mili. '
+                      'Professor ke page par khud dhoondein.',
+                  style: TextStyle(fontSize: 12)),
+            for (final e in emails.entries) emailRow(e.key, e.value),
+            if (emails.isNotEmpty)
+              const Text(
+                  'Email AI ne jama ki hai ya page se padhi hai. Bhejne se pehle homepage se match zaroor karein.',
+                  style: TextStyle(fontSize: 11, color: Colors.black54)),
+            if (info.title != null || info.department != null) ...[
+              sectionTitle('Title / Department'),
+              Text(
+                  [info.title, info.department]
+                      .whereType<String>()
+                      .join(' • '),
+                  style: const TextStyle(fontSize: 13)),
+            ],
+            for (final f in const [
+              ['research_area', 'Research area (database)'],
+              ['last_research', 'Recent work (AI se jama, verify karein)'],
+              ['research_topic', 'Suggested topic (AI ka idea, verify karein)'],
+            ])
+              if ((professorData[f[0]] ?? '').toString().trim().isNotEmpty) ...[
+                sectionTitle(f[1]),
+                SelectableText(professorData[f[0]].toString(),
+                    style: const TextStyle(fontSize: 12)),
+              ],
+            sectionTitle('Links'),
+            if (links.isEmpty)
+              const Text('Koi link nahi mila', style: TextStyle(fontSize: 12)),
+            for (final l in links.entries) linkRow(context, l.key, l.value),
+            if (info.areas.isNotEmpty) ...[
+              sectionTitle('Research areas (homepage se)'),
+              Text(info.areas.join(', '), style: const TextStyle(fontSize: 13)),
+            ],
+            if (info.orcidKeywords.isNotEmpty) ...[
+              sectionTitle('ORCID keywords'),
+              Text(info.orcidKeywords.join(', '),
+                  style: const TextStyle(fontSize: 13)),
+            ],
+            if (info.orcidWorks.isNotEmpty) ...[
+              sectionTitle('Papers (ORCID se)'),
+              for (final w in info.orcidWorks)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 3),
+                  child: Text('• $w', style: const TextStyle(fontSize: 12)),
+                ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+============================================================
+File: .\lib\widgets\index_builder_dialog.dart
+============================================================
+
+import 'package:flutter/material.dart';
+import '../services/search_service.dart';
+import 'message_dialog.dart';
+
+/// Search index banane ka flow (confirm -> progress -> result).
+/// true wapas deta hai agar index chala (taake list refresh ho sake).
+Future<bool> showIndexBuilder(BuildContext context) async {
+  final confirm = await showDialog<bool>(
+    context: context,
+    builder: (c) => AlertDialog(
+      title: const Text('Search index banayein?'),
+      content: const Text(
+          'Yeh har professor ke document mein search ke liye ek field '
+          '(searchTokens) likhega. 20,000 docs ke liye takreeban 20,000 writes '
+          'lagengi (Firebase free limit 20,000 writes/din hai). Beech mein '
+          'ruk jaye to dobara chalayein, jo ho chuke woh skip ho jayenge.\n\n'
+          'Sirf ek dafa karna hai.'),
+      actions: [
+        TextButton(
+            onPressed: () => Navigator.pop(c, false),
+            child: const Text('Cancel')),
+        FilledButton(
+            onPressed: () => Navigator.pop(c, true),
+            child: const Text('Shuru karein')),
+      ],
+    ),
+  );
+  if (confirm != true || !context.mounted) return false;
+
+  final status = ValueNotifier<String>('Shuru ho raha hai...');
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (c) => AlertDialog(
+      title: const Text('Index ban raha hai'),
+      content: ValueListenableBuilder<String>(
+        valueListenable: status,
+        builder: (_, v, __) => Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const LinearProgressIndicator(),
+            const SizedBox(height: 12),
+            Text(v),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  final report = await SearchService.buildIndex((s) => status.value = s);
+
+  if (!context.mounted) return true;
+  Navigator.pop(context); // progress dialog band
+  showMessageDialog(
+    context,
+    report.error == null ? 'Index tayyar' : 'Index adhoora reh gaya',
+    report.error == null
+        ? 'Update hue: ${report.updated}, pehle se theek: ${report.skipped}. Ab search poore 20,000 professors mein chalegi.'
+        : 'Update hue: ${report.updated}.\n\nError: ${report.error}\n\nAgar "permission-denied" hai to Firestore Rules mein professors par write allow karein, aur agar quota ka error hai to kal dobara chalayein (jo ho chuke woh skip honge).',
+  );
+  return true;
+}
+
+
+============================================================
+File: .\lib\widgets\message_dialog.dart
+============================================================
+
+import 'package:flutter/material.dart';
+
+void showMessageDialog(BuildContext context, String title, String message) {
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text(title),
+      content: SingleChildScrollView(child: SelectableText(message)),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('OK'),
+        ),
+      ],
+    ),
+  );
+}
+
+
+============================================================
+File: .\lib\widgets\profile_dialog.dart
+============================================================
+
+import 'package:flutter/material.dart';
+import '../services/profile_store.dart';
+
+/// Apni details likhne / edit karne ka dialog. Save karne par nayi profile wapas deta hai.
+Future<UserProfile?> showProfileDialog(
+    BuildContext context, UserProfile current) {
+  final nameCtrl = TextEditingController(text: current.name);
+  final profileCtrl = TextEditingController(text: current.text);
+
+  return showDialog<UserProfile>(
+    context: context,
+    builder: (dialogContext) => AlertDialog(
+      title: const Text('My Profile (AI is se email likhega)'),
+      content: SizedBox(
+        width: 520,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: nameCtrl,
+                decoration: const InputDecoration(
+                  labelText: 'Aap ka poora naam',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                controller: profileCtrl,
+                minLines: 8,
+                maxLines: 14,
+                decoration: const InputDecoration(
+                  labelText: 'Apne bare mein sab kuch likhein',
+                  alignLabelWithHint: true,
+                  hintText:
+                      'Degree/university, CGPA, skills, projects, research '
+                      'interests, publications, experience, kaun si degree '
+                      '(MS/PhD) aur kis field mein apply karna hai, email/'
+                      'phone waghaira. Urdu/Roman/English kisi mein bhi likh '
+                      'sakte hain.',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext),
+          child: const Text('Cancel'),
+        ),
+        FilledButton(
+          onPressed: () async {
+            final p = UserProfile(
+              name: nameCtrl.text.trim(),
+              text: profileCtrl.text.trim(),
+            );
+            await ProfileStore.save(p);
+            if (dialogContext.mounted) Navigator.pop(dialogContext, p);
+          },
+          child: const Text('Save'),
+        ),
+      ],
+    ),
+  );
+}
+
+
+============================================================
+File: .\test\widget_test.dart
+============================================================
+
+// This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility in the flutter_test package. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
+
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:untitled4/main.dart';
+
+void main() {
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MyApp());
+
+    // Verify that our counter starts at 0.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
+
+    // Tap the '+' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
+
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
+  });
+}

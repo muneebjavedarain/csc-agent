@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1089598716077",
+    "project_id": "csc-outreach-agent",
+    "storage_bucket": "csc-outreach-agent.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089598716077:android:caaada28086ea600ee6e24",
+        "android_client_info": {
+          "package_name": "com.example.untitled4"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMDp4jwMd8vLHGTRTCJOT_BwyKocbBdvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
